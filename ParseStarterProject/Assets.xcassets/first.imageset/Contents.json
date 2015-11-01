@@ -2,7 +2,30 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "first.pdf"
+      "scale" : "1x"
+    },
+    {
+      "resizing" : {
+        "mode" : "9-part",
+        "center" : {
+          "mode" : "tile",
+          "width" : 63,
+          "height" : 58
+        },
+        "cap-insets" : {
+          "bottom" : 0,
+          "top" : 1,
+          "right" : 0,
+          "left" : 33
+        }
+      },
+      "idiom" : "universal",
+      "filename" : "TV Shows + TV.png",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {

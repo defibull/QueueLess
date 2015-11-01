@@ -11,9 +11,10 @@ import UIKit
 class PaymentsViewController: UIViewController {
 
     @IBOutlet weak var myWebView: UIWebView!
+    var price: Int = 0;
     override func viewDidLoad() {
         super.viewDidLoad()
-        let price = 23;
+        
         let url = NSURL(string: "http://tonite.co/payment.php?price="+String(price))
         let requestObj = NSURLRequest(URL: url!)
         myWebView.loadRequest(requestObj)

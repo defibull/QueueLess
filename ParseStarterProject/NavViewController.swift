@@ -19,6 +19,7 @@ class NavViewController: UINavigationController {
         {
             print("title being set")
             self.navigationController?.navigationItem.title = "Home"
+           
         }
         
     }

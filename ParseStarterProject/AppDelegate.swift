@@ -30,7 +30,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Enable storing and querying data from Local Datastore.
         // Remove this line if you don't want to use Local Datastore features or want to use cachePolicy.
         Parse.enableLocalDatastore()
-
+        let customBlue: UIColor = UIColor(red: 28/255, green: 87/255, blue: 255/255, alpha: 0.8)        //(red: 28/255, green: 87/255, blue: 255/255, alpha: 0.8)
+        let customWhite: UIColor = UIColor(red: 255/255, green: 255/255, blue: 252/255, alpha: 1)
+        var attributes = [
+            NSForegroundColorAttributeName: UIColor.whiteColor(),
+            NSFontAttributeName: UIFont(name: "Gill Sans", size: 22)!
+        ]
+        
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName: customBlue]
+        UINavigationBar.appearance().titleTextAttributes = attributes
+        UINavigationBar.appearance().barTintColor = customBlue
+        
         // ****************************************************************************
         // Uncomment this line if you want to enable Crash Reporting
         // ParseCrashReporting.enable()
@@ -50,6 +61,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         // If you would like all objects to be private by default, remove this line.
         defaultACL.setPublicReadAccess(true)
+        defaultACL.setPublicWriteAccess(true)
 
         PFACL.setDefaultACL(defaultACL, withAccessForCurrentUser:true)
 

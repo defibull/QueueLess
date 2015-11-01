@@ -56,7 +56,7 @@ class FTTableViewController: UITableViewController,UITextFieldDelegate {
         let buttonRow = sender.tag
     }
     
-    
+    var finalPaymentAmount = 0
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("MenuTableViewCell", forIndexPath: indexPath) as! MenuTableViewCell
         cell.menuItemTitle.text = AsianMenuArray[indexPath.row]
@@ -71,6 +71,7 @@ class FTTableViewController: UITableViewController,UITextFieldDelegate {
             order["ItemName"] = self.AsianMenuArray[indexPath.row]
             order["quantity"] = cell.quantity
             order["price"] = self.AsianItemsPrice[indexPath.row]
+            self.finalPaymentAmount = Int(self.AsianItemsPrice[indexPath.row] * cell.quantity)
             order["IDNumber"] = 0
             var err: NSErrorPointer = nil
             counter = numberQuery.countObjects(err)
@@ -79,6 +80,7 @@ class FTTableViewController: UITableViewController,UITextFieldDelegate {
                 (success: Bool, error: NSError?) -> Void in
                 if (success) {
                     print("order save successful")
+                    self.performSegueWithIdentifier("toPayment", sender: self)
                     // The object has been saved.
                 } else {
                     // There was a problem, check error.description
@@ -122,6 +124,11 @@ class FTTableViewController: UITableViewController,UITextFieldDelegate {
         }
     }
 
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        var paymentScene = segue.destinationViewController as! PaymentsViewController
+        paymentScene.price = self.finalPaymentAmount
+    }
+    
 
     /*
     // Override to support conditional editing of the table view.
